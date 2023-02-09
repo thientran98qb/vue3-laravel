@@ -24,10 +24,10 @@ return [
         'token' => env('POSTMARK_TOKEN'),
     ],
 
-    'ses' => [
-        'key' => env('AWS_ACCESS_KEY_ID'),
-        'secret' => env('AWS_SECRET_ACCESS_KEY'),
-        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    'github' => [
+        'client_id' => env('OAUTH_GITHUB_CLIENT_ID'),
+        'client_secret' => env('OAUTH_GITHUB_SECRET_KEY'),
+        'redirect' =>  env('OAUTH_GITHUB_REDIRECT_URI', env('APP_URL').'/github/callback')
     ],
 
 ];

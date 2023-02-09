@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
+        'project_id'
     ];
 
     /**
@@ -41,4 +43,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function socialAccountUsers()
+    {
+        return $this->hasMany(SocialAccountUser::class);
+    }
+
+    public function getFullNameAttribute()
+    {
+        if ($this->name) return ucwords($this->name);
+    }
 }

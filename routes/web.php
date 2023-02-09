@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OAuthController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/admin', [ProjectController::class, 'index']);
+
+Route::get('login/{provider}', [OAuthController::class, 'redirectToProvider']);
+Route::get('auth/{provider}/callback', [OAuthController::class, 'handleCallbackProvider']);

@@ -1,10 +1,24 @@
 import { createApp } from 'vue'
-import Game from './components/Game.vue'
+import '@mdi/font/css/materialdesignicons.css'
+import 'vuetify/styles'
+import Dashboard from './components/Dashboard.vue'
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
+import axios from 'axios'
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+const vuetify = createVuetify({
+  components,
+  directives
+})
 
 const app = createApp({
   components: {
-    Game
+    Dashboard
   }
 })
 
-app.mount('#app')
+app.use(vuetify).mount('#app')
+
